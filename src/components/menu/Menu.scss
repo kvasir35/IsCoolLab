@@ -1,0 +1,25 @@
+@use "@/styles/font" as *;
+@use "@/styles/color" as *;
+
+.menu-cmp {
+  border: 1px solid $color-1;
+  border-radius: 5px;
+  padding: 20px;
+  .title {
+    @include title-2();
+  }
+
+  .container {
+    .cat-title {
+      @include title-3();
+    }
+
+    .list-item {
+      .item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

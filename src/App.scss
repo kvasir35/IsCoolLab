@@ -1,0 +1,12 @@
+.app {
+  width: 90%;
+  margin: auto;
+  .title {
+    text-align: center;
+  }
+
+  .app-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,23 @@
+@mixin title-1($weight: 700) {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: $weight;
+}
+
+@mixin title-2($weight: 700) {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: $weight;
+}
+
+@mixin title-3($weight: 700) {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: $weight;
+}
+
+@mixin text-1($weight: 400) {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: $weight;
+}

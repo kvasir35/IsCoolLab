@@ -1,0 +1,14 @@
+{
+  "food": [
+    { "id": "food1", "label": "Cheeseburger" },
+    { "id": "food2", "label": "Caesar Salad" }
+  ],
+  "drink": [
+    { "id": "drink1", "label": "Coca-Cola" },
+    { "id": "drink2", "label": "Orange Juice" }
+  ],
+  "other": [
+    { "id": "other1", "label": "French Fries" },
+    { "id": "other2", "label": "Chocolate Cake" }
+  ]
+}

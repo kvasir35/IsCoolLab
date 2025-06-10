@@ -1,38 +1,52 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-// ✅ 1. Define a type for the slice state
-interface CounterState {
-  value: number;
+interface CartItem {
+  id: string;
+  label: string;
+  quantity: number;
+}
+
+interface CartState {
+  itemList: CartItem[];
   status: "idle" | "loading" | "failed";
 }
 
-// ✅ 2. Set initial state with that type
-const initialState: CounterState = {
-  value: 0,
+const initialState: CartState = {
+  itemList: [],
   status: "idle",
 };
 
-// ✅ 3. Type the payload using PayloadAction
-export const counterSlice = createSlice({
-  name: "counter",
+export const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    add: (state, action: PayloadAction<CartItem>) => {
+      const { id, quantity } = action.payload;
+      const existingItem = state.itemList.find((item) => item.id === id);
+      if (existingItem) {
+        let newQuantity = existingItem.quantity + quantity;
+
+        if (newQuantity <= 0) {
+          state.itemList = state.itemList.filter((item) => item.id !== id);
+        } else {
+          existingItem.quantity = newQuantity;
+        }
+      } else {
+        if (quantity && quantity > 0) {
+          state.itemList.push(action.payload);
+        }
+      }
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    deleteItem: (state, action: PayloadAction<string>) => {
+      const idToDelete = action.payload;
+      state.itemList = state.itemList.filter((item) => item.id !== idToDelete);
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
-export default counterSlice.reducer;
+export const { add, deleteItem } = cartSlice.actions;
+export default cartSlice.reducer;
 
-// ✅ Type RootState for selector (replace with your actual RootState)
 import type { RootState } from "../../app/store";
-export const selectCount = (state: RootState) => state.counter.value;
+export const cart = (state: RootState) => state.cart.itemList;
