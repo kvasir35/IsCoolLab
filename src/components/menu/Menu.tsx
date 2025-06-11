@@ -26,7 +26,7 @@ const Menu = () => {
           <ul className="list-item">
             {items.map((item: { id: string; label: string }) => (
               <li className="item" key={item.id}>
-                <span className="label">{item.label} </span>
+                <span className="label">- {item.label} </span>
                 <span className="action">
                   <Button onClick={() => handleAddToCart(item)}>
                     Add to Cart

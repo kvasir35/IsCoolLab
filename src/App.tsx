@@ -5,12 +5,13 @@ import OrderHistory from "@/features/orderHistory";
 
 import Menu from "@/components/menu/Menu";
 import Popup from "@/components/popUp/popUp";
+import Button from "@/components/button";
 
 import "./App.scss";
-import Button from "./components/button";
 
 const App = () => {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+
   return (
     <div className="app">
       <h1 className="title">Is Cool Lab project</h1>

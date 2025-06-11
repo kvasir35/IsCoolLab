@@ -2,11 +2,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 import Button from "@/components/button";
-import { deleteItem, cart, clear } from "./cartSlice";
+import Popup from "@/components/popUp/popUp";
+
+import { deleteItem, add, clear, cart } from "./cartSlice";
 import { addOrder } from "@/features/orderHistory/orderSlice";
 
+import TrashIcon from "@/assets/trash.svg";
+
 import "./Cart.scss";
-import Popup from "@/components/popUp/popUp";
 
 const Cart = () => {
   const currentCart = useSelector(cart);
@@ -32,10 +35,23 @@ const Cart = () => {
               return (
                 <li className="item" key={item.id}>
                   <div className="label">{item.label}</div>
-                  <div className="quantity">{item.quantity}</div>
+
                   <div className="action">
+                    <Button
+                      onClick={() => dispatch(add({ ...item, quantity: -1 }))}
+                    >
+                      -
+                    </Button>
+
+                    <div className="quantity">{item.quantity}</div>
+                    <Button
+                      onClick={() => dispatch(add({ ...item, quantity: 1 }))}
+                    >
+                      +
+                    </Button>
+
                     <Button onClick={() => dispatch(deleteItem(item.id))}>
-                      Delete
+                      <img className="trash-icon" src={TrashIcon} />
                     </Button>
                   </div>
                 </li>
@@ -44,7 +60,11 @@ const Cart = () => {
           )}
         </ul>
 
-        <Button className="submit-cart" onClick={() => submitCart()}>
+        <Button
+          className="submit-cart"
+          onClick={() => submitCart()}
+          disabled={currentCart.length <= 0}
+        >
           Submit
         </Button>
       </div>
