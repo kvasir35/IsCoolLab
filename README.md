@@ -76,7 +76,15 @@ npm run test
 Or run tests with the interactive UI by running:
 
 ```Bash
-npx vitest --ui
+npm run testui
+```
+
+## Linting
+
+You can check code quality using ESLint with:
+
+```bash
+npm run lint
 ```
 
 ## Key Features
@@ -93,17 +101,17 @@ npx vitest --ui
 
 ## Technologies Used
 
-- React 18+
+- React ^19.1.0
 
-- TypeScript
+- TypeScript ~5.8.3
 
-- Redux Toolkit
+- Redux Toolkit ^2.8.2
 
-- Vite
+- Vite ^6.3.5
 
-- Vitest & React Testing Library
+- Vitest ^3.2.3 & React Testing Library ^16.3.0
 
-- Sass for styling
+- Sass ^1.89.2
 
 ## License
 
