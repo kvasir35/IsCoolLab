@@ -20,8 +20,8 @@ const OrderHistory = () => {
       {history.length <= 0 ? (
         <div>No history</div>
       ) : (
-        history.map((order) => (
-          <>
+        <>
+          {history.map((order) => (
             <div key={order.id} className="order-container">
               <h3 className="order-title">
                 Order on {new Date(order.date).toLocaleString()}
@@ -35,15 +35,14 @@ const OrderHistory = () => {
                 ))}
               </ul>
             </div>
-
-            <Button
-              className="clear-history-btn"
-              onClick={() => dispatch(clearHistory())}
-            >
-              Clear History
-            </Button>
-          </>
-        ))
+          ))}
+          <Button
+            className="clear-history-btn"
+            onClick={() => dispatch(clearHistory())}
+          >
+            Clear History
+          </Button>
+        </>
       )}
     </div>
   );
