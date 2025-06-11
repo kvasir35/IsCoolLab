@@ -5,12 +5,10 @@ import type { CartItem } from "@/type/order";
 
 interface CartState {
   itemList: CartItem[];
-  status: "idle" | "loading" | "failed";
 }
 
 const initialState: CartState = {
   itemList: [],
-  status: "idle",
 };
 
 export const cartSlice = createSlice({
