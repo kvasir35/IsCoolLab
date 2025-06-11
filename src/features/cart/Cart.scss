@@ -2,19 +2,42 @@
 @use "@/styles/color" as *;
 
 .cart-cmp {
-  border: 1px solid $color-1;
-  border-radius: 5px;
-  padding: 20px;
-  min-width: 200px;
-  .title {
-    @include title-2();
-  }
+  .cart-container {
+    border: 1px solid $color-1;
+    border-radius: 5px;
+    padding: 20px 20px 100px 20px;
+    min-width: 200px;
+    position: relative;
+    .title {
+      @include title-2();
+    }
 
-  .list-item {
-    .item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
+    .list-item {
+      .item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .label {
+          margin: auto 0;
+          width: 45%;
+        }
+
+        .quantity {
+          margin: auto 0;
+        }
+
+        .action {
+          width: 45%;
+          text-align: right;
+        }
+      }
+    }
+
+    .submit-cart {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
     }
   }
 }

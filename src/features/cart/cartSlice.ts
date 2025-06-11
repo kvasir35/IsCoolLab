@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-interface CartItem {
-  id: string;
-  label: string;
-  quantity: number;
-}
+import type { RootState } from "@/app/store";
+import type { CartItem } from "@/type/order";
 
 interface CartState {
   itemList: CartItem[];
@@ -42,11 +38,13 @@ export const cartSlice = createSlice({
       const idToDelete = action.payload;
       state.itemList = state.itemList.filter((item) => item.id !== idToDelete);
     },
+    clear: (state) => {
+      state.itemList = [];
+    },
   },
 });
 
-export const { add, deleteItem } = cartSlice.actions;
+export const { add, deleteItem, clear } = cartSlice.actions;
 export default cartSlice.reducer;
 
-import type { RootState } from "../../app/store";
 export const cart = (state: RootState) => state.cart.itemList;
